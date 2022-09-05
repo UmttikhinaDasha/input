@@ -1,0 +1,19 @@
+@mixin field-validation($default-color, $background) {
+    .field__label {
+        color: $default-color;
+    }
+
+    .field__input {
+        background: $background;
+    }
+
+    .field__input:focus,
+    .field__input:active {
+        outline: 0;
+        border: 2px solid $default-color;
+    }
+
+    .field__caption {
+        color: $default-color;
+    }
+}

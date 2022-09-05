@@ -1,0 +1,21 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.wrapper {
+    padding: 2em;
+
+    &__col {
+        display: inline-block;
+        vertical-align: top;
+        margin-right: 40px;
+    }
+
+    &__col > div {
+        margin-bottom: 40px;
+    }
+}

@@ -1,0 +1,143 @@
+@import './src/styles/variables';
+@import '../../styles/styles';
+@import '../../styles/mixins';
+
+.field {
+    font-family: $font-family;
+    font-size: $font-size;
+    letter-spacing: $letter-spacing;
+    font-weight: $font-weight;
+    line-height: $line-height;
+
+    display: flex;
+    flex-flow: column-reverse;
+    position: relative;
+    width: 20.5rem;
+    height: 4rem;
+
+    &__label,
+    &__input {
+        transition: all 0.2s;
+    }
+
+    &__label {
+        position: absolute;
+        padding: 1.125rem 0 1.125rem 1.5rem;
+        color: $gray;
+        transition: padding-bottom 0.2s ease-in, font-size 0.2s ease-in;
+    }
+
+    &__input {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        padding: 1.7rem 2.3rem 0.4rem 1.5rem;
+        font-size: inherit;
+        letter-spacing: inherit;
+        background: $light-gray;
+        border-radius: 16px;
+        border: 2px solid transparent;
+        caret-color: transparent;
+    }
+
+    &__input:disabled {
+        border: 2px solid transparent !important;
+        background: $light-gray !important;
+        opacity: 0.5;
+    }
+
+    &__input:disabled ~ &__icon-close {
+        display: none !important;
+    }
+
+    &__input:focus,
+    &__input:active {
+        background: transparent;
+        border: 2px solid $black;
+    }
+
+    &__input:focus ~ &__icon-close,
+    &__input:active ~ &__icon-close {
+        display: block;
+    }
+
+    &__icon-close {
+        display: none;
+        cursor: pointer;
+        position: absolute;
+        right: 1.25rem;
+        bottom: 1.25rem;
+        width: 24px;
+        height: 24px;
+        background-image: url('../../icon/icon-close.svg');
+        background-repeat: no-repeat;
+    }
+
+    &--typing {
+        .field__label {
+            padding: 0.6rem 0 2rem 1.5rem;
+            font-size: 0.85rem;
+            color: $dark-gray;
+        }
+
+        .field__input {
+            caret-color: auto;
+        }
+    }
+
+    &__caption {
+        position: absolute;
+        left: 0.1rem;
+        top: 4rem;
+        font-size: 0.85rem;
+        letter-spacing: 0.25px;
+        color: $dark-gray;
+    }
+}
+
+.field--success {
+    @include field-validation($dark-green, $light-green);
+}
+
+.field--error {
+    @include field-validation($dark-red, $light-red);
+}
+
+.field--search {
+    .field__label {
+        padding-left: 3.5rem !important;
+    }
+
+    .field__input {
+        background-image: url('../../icon/icon-search.svg') !important;
+        background-repeat: no-repeat !important;
+        background-position: 1rem !important;
+        padding-left: 3.5rem !important;
+    }
+}
+
+.field--small {
+    height: 57px;
+
+    .field__label {
+        padding: 1rem 0 0.9rem 1.5rem;
+    }
+
+    .field__input {
+        padding: 1.6rem 2.3rem 0.2rem 1.5rem;
+    }
+
+    &.field--typing {
+        .field__label {
+            padding: 0.2rem 0 1.6rem 1.5rem;
+        }
+    }
+
+    .field__icon-close {
+        bottom: 1rem;
+    }
+
+    .field__caption {
+        top: 3.5rem;
+    }
+}
